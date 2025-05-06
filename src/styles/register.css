@@ -1,0 +1,38 @@
+.register__container {
+  width: 300px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9; /* Added background color */
+}
+
+.register__textBox {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.register__btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.register__btn:hover {
+  background-color: #0056b3; /* Added hover effect */
+}
+
+.register__google {
+  background-color: #db4437; /* Google button color */
+}
+
+.register__google:hover {
+  background-color: #c13527; /* Google button hover effect */
+}

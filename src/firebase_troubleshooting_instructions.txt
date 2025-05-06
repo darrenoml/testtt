@@ -1,0 +1,27 @@
+# Firebase API Key Troubleshooting Instructions
+
+To resolve the "API key not valid" error, please follow these steps:
+
+1. **Log in to Firebase Console**:
+   - Go to the [Firebase Console](https://console.firebase.google.com/).
+   - Select your project (e.g., "wadsweek5").
+
+2. **Verify API Key**:
+   - Navigate to "Project Settings" (gear icon next to "Project Overview").
+   - Under the "General" tab, scroll down to the "Your apps" section.
+   - Ensure that the API key listed matches the one in your `src/firebase.js` file.
+
+3. **Check API Key Restrictions**:
+   - If you have restrictions set on the API key, ensure that they allow access from your application.
+   - You can modify restrictions under the "Credentials" section in the Google Cloud Console.
+
+4. **Test Authentication Methods**:
+   - In the Firebase Console, go to "Authentication" and ensure that the sign-in methods you are using (e.g., Email/Password, Google) are enabled.
+
+5. **Regenerate API Key (if necessary)**:
+   - If the API key appears to be incorrect or if you suspect it may be compromised, you can generate a new API key and update it in your `src/firebase.js` file.
+
+6. **Test Your Application**:
+   - After making any changes, test your application to see if the error persists.
+
+Please follow these instructions and let me know if you need further assistance.

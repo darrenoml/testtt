@@ -1,0 +1,16 @@
+.updated-todo {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9; /* Added background color */
+}
+
+.todo__title {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.todo__description {
+  font-size: 1em;
+  color: #333; /* Darker text color for better readability */
+}

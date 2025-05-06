@@ -1,0 +1,92 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "ToDo API",
+      "version": "1.0.0",
+      "description": "A simple Express ToDo API with Firebase Firestore"
+    },
+    "servers": [
+      {
+        "url": "http://localhost:3000/api"
+      }
+    ],
+    "paths": {
+      "/todos": {
+        "get": {
+          "summary": "Get all todos",
+          "responses": {
+            "200": {
+              "description": "List of todos"
+            }
+          }
+        },
+        "post": {
+          "summary": "Create a new todo",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "title": { "type": "string" },
+                    "completed": { "type": "boolean" }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Todo created"
+            }
+          }
+        }
+      },
+      "/todos/{id}": {
+        "put": {
+          "summary": "Update a todo",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": { "type": "string" }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "title": { "type": "string" },
+                    "completed": { "type": "boolean" }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": { "description": "Todo updated" }
+          }
+        },
+        "delete": {
+          "summary": "Delete a todo",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": { "type": "string" }
+            }
+          ],
+          "responses": {
+            "200": { "description": "Todo deleted" }
+          }
+        }
+      }
+    }
+  }
+  
