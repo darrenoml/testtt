@@ -2,36 +2,36 @@
     "openapi": "3.0.0",
     "info": {
       "title": "ToDo API",
-      "version": "1.0.0",
-      "description": "A simple Express ToDo API with Firebase Firestore"
+      "version": "1.0.0"
     },
-    "servers": [
-      {
-        "url": "http://localhost:3000/api"
-      }
-    ],
     "paths": {
       "/todos": {
         "get": {
-          "summary": "Get all todos",
+          "summary": "Get all Todos",
           "responses": {
             "200": {
-              "description": "List of todos"
+              "description": "A list of todos",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Todo"
+                    }
+                  }
+                }
+              }
             }
           }
         },
         "post": {
-          "summary": "Create a new todo",
+          "summary": "Create a new Todo",
           "requestBody": {
             "required": true,
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "title": { "type": "string" },
-                    "completed": { "type": "boolean" }
-                  }
+                  "$ref": "#/components/schemas/Todo"
                 }
               }
             }
@@ -44,14 +44,43 @@
         }
       },
       "/todos/{id}": {
-        "put": {
-          "summary": "Update a todo",
+        "get": {
+          "summary": "Get a specific Todo",
           "parameters": [
             {
               "name": "id",
               "in": "path",
               "required": true,
-              "schema": { "type": "string" }
+              "description": "Todo ID",
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Todo details",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Todo"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "summary": "Update an existing Todo",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "description": "Todo ID",
+              "schema": {
+                "type": "integer"
+              }
             }
           ],
           "requestBody": {
@@ -59,31 +88,55 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "title": { "type": "string" },
-                    "completed": { "type": "boolean" }
-                  }
+                  "$ref": "#/components/schemas/Todo"
                 }
               }
             }
           },
           "responses": {
-            "200": { "description": "Todo updated" }
+            "200": {
+              "description": "Todo updated"
+            }
           }
         },
         "delete": {
-          "summary": "Delete a todo",
+          "summary": "Delete a Todo",
           "parameters": [
             {
               "name": "id",
               "in": "path",
               "required": true,
-              "schema": { "type": "string" }
+              "description": "Todo ID",
+              "schema": {
+                "type": "integer"
+              }
             }
           ],
           "responses": {
-            "200": { "description": "Todo deleted" }
+            "200": {
+              "description": "Todo deleted"
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "Todo": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "title": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "completed": {
+              "type": "boolean"
+            }
           }
         }
       }
